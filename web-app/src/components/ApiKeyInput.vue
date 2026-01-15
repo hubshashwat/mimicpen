@@ -1,8 +1,8 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <h2>API Key</h2>
-      <p>Connect your Gemini API key to get started</p>
+      <h2>Gemini API Key</h2>
+      <p>Connect your Google Gemini key to get started</p>
     </div>
     
     <div class="input-group">
@@ -42,7 +42,7 @@
     
     <p class="hint">
       Your key is stored locally in your browser.
-      <a href="https://aistudio.google.com/apikey" target="_blank">Get an API key →</a>
+      <a href="https://aistudio.google.com/apikey" target="_blank">Get a Gemini API key →</a>
     </p>
   </div>
 </template>

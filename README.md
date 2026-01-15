@@ -1,6 +1,8 @@
 # MimicPen ✍️
 
-Create a personal AI that writes exactly like you.
+Create a personal AI that writes exactly like you, powered by **Google Gemini**.
+
+**[Live Demo](https://hubshashwat.github.io/mimicpen/)**
 
 ## What It Does
 

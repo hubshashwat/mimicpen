@@ -81,7 +81,7 @@
     <footer class="footer">
       <div class="footer-content">
         <span class="footer-badge">🔒 Client-side only</span>
-        <span class="footer-text">Your data never leaves your browser</span>
+        <span class="footer-text">Powered by <b>Google Gemini</b> • Your data never leaves your browser</span>
         <button class="reset-btn" @click="resetAll">Reset All</button>
       </div>
     </footer>
