@@ -1,0 +1,342 @@
+/* Digital Twin Writer - Premium Tech Theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Deep Obsidian background */
+  --bg-primary: #0C0C0C;
+  --bg-secondary: #111111;
+  --bg-elevated: #161616;
+  --bg-card: #1A1A1A;
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.1);
+  --border-hover: rgba(255, 255, 255, 0.15);
+
+  /* Text */
+  --text-primary: #FFFFFF;
+  --text-secondary: #A1A1AA;
+  --text-muted: #52525B;
+
+  /* Accent - Soft Indigo */
+  --accent: #6366F1;
+  --accent-light: #818CF8;
+  --accent-glow: rgba(99, 102, 241, 0.15);
+  --accent-glow-strong: rgba(99, 102, 241, 0.25);
+
+  /* Success / Error */
+  --success: #22C55E;
+  --error: #EF4444;
+
+  /* Spacing */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Font */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Animated flame/aurora background */
+.flame-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.flame {
+  position: absolute;
+  bottom: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 70%;
+  background:
+    radial-gradient(ellipse 50% 80% at 50% 100%, rgba(99, 102, 241, 0.6) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 60% at 30% 100%, rgba(139, 92, 246, 0.5) 0%, transparent 40%),
+    radial-gradient(ellipse 45% 65% at 70% 100%, rgba(79, 70, 229, 0.45) 0%, transparent 45%);
+  filter: blur(60px);
+  animation: flameWave 6s ease-in-out infinite;
+}
+
+.flame::before {
+  content: '';
+  position: absolute;
+  bottom: 5%;
+  left: 10%;
+  width: 80%;
+  height: 60%;
+  background:
+    radial-gradient(ellipse 60% 90% at 50% 100%, rgba(99, 102, 241, 0.4) 0%, transparent 60%);
+  filter: blur(50px);
+  animation: flamePulse 4s ease-in-out infinite;
+}
+
+.flame::after {
+  content: '';
+  position: absolute;
+  bottom: 15%;
+  left: 25%;
+  width: 50%;
+  height: 45%;
+  background:
+    radial-gradient(ellipse 70% 100% at 50% 100%, rgba(129, 140, 248, 0.35) 0%, transparent 55%);
+  filter: blur(40px);
+  animation: flameFlicker 3s ease-in-out infinite alternate;
+}
+
+@keyframes flameWave {
+
+  0%,
+  100% {
+    transform: translateX(-50%) scaleY(1) scaleX(1);
+    opacity: 0.8;
+  }
+
+  25% {
+    transform: translateX(-48%) scaleY(1.05) scaleX(0.98);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: translateX(-52%) scaleY(1.1) scaleX(1.02);
+    opacity: 1;
+  }
+
+  75% {
+    transform: translateX(-49%) scaleY(1.03) scaleX(0.99);
+    opacity: 0.85;
+  }
+}
+
+@keyframes flamePulse {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes flameFlicker {
+  0% {
+    opacity: 0.5;
+    transform: translateY(0) translateX(0);
+  }
+
+  100% {
+    opacity: 0.8;
+    transform: translateY(-5%) translateX(2%);
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}
+
+/* Selection */
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+/* Focus */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Form elements */
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Links */
+a {
+  color: var(--accent-light);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+a:hover {
+  color: var(--text-primary);
+}
+
+/* Utility classes */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--accent-light);
+  box-shadow: 0 8px 24px var(--accent-glow-strong);
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--bg-elevated);
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+.btn-secondary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ==================== MOBILE RESPONSIVE ==================== */
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  /* Fix overflow issues */
+  body,
+  #app {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .card {
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  /* Ensure text wraps */
+  h1,
+  h2,
+  h3,
+  p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Smaller font sizes */
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.15rem;
+  }
+
+  /* Form elements full width */
+  input,
+  textarea,
+  select {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Stack buttons vertically */
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 360px) {
+  html {
+    font-size: 13px;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+}
